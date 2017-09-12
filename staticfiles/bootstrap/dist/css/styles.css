@@ -1,0 +1,40 @@
+
+		.container-tab{
+		 justify-content: center;
+		align-items: center;
+        }
+         .navbar-default {
+          background-color: #33ccff;
+          color:#ffffff;
+        }
+       .navbar-default .navbar-nav li a {
+      	color:#ffffff;
+        }
+        .navbar-default .navbar-nav .open .dropdown-menu>li>a{
+        color:#33ccff; 
+        }
+
+        .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{
+        	background-color: #ffffff;
+        	color: .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover 
+        }
+		.navbar-brand {
+		  padding: 0px;
+		}
+		.navbar-brand>img {
+		  height: 100%;
+		  padding: 15px;
+		  width: auto;
+		}
+		.navbar-default .navbar-brand img #unifi:hover{
+			background: #ffffff;
+			color:#ffffff;
+		}
+		.dataTables_wrapper .dataTables_paginate .paginate_button{
+			color:#ffffff important;
+		}
+		.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
+
+			background-color: #33ccff;
+			border-color:#33ccff;
+		}

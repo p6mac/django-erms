@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %} ERMS! | Manage Users {% endblock %}
+{% block content %}
+
+    {% include 'nav.html' %}
+    
+    {% if users %}
+        {% for user in users %}
+            {{ user.username }}
+        {% endfor %}
+    {% endif %}
+{% endblock %}

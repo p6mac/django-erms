@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ModelForm
 
 # Create your models here.
 class Departments(models.Model) :
@@ -10,3 +11,8 @@ class Departments(models.Model) :
 
     class Meta :
         db_table = 'departments'
+
+class DepartmentsForm(ModelForm):
+    class Meta :
+        model = Departments
+        fields = '__all__'

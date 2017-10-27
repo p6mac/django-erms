@@ -12,26 +12,41 @@
     <link rel="icon" href="../../favicon.ico">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/dataTables.bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/signin.css' %}">
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/AdminLTE.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/square/blue.css' %}">
+    <link rel="stylesheet" href="{% static 'css/skins/_all-skins.min.css' %}">
+
 
     <title>{% block title %} {% endblock %} </title>
 
   </head>
 
-  <body>
-    <div class="container">
-      {% block content %}
+  <body class="hold-transition skin-blue layout-top-nav">
+    <div class="wrapper">
+      {% block content-top-nav %}
       {% endblock %}
-    </div> <!-- /container -->
 
+      {% block content-side-nav %}
+      {% endblock %}
+
+      <div class="content-wrapper">
+          <div class="container">
+            <section class="content">
+                {% block content %}
+                {% endblock %}  
+            </section>
+          </div> <!-- /container -->
+        </div>
+    </div>
   </body>
 
   <script src="{% static '\js\jquery.js' %}"></script>
   <script src="{% static '\js\bootstrap.min.js' %}"></script>
   <script src="{% static '\js\jquery.dataTables.min.js' %}"></script>  
   <script src="{% static '\js\dataTables.bootstrap.min.js' %}"></script>
+  <script src="{% static '\js\icheck.min.js' %}"></script>
   {% block myjs %} {% endblock %}
 </script>
 </html>

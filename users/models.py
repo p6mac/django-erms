@@ -1,17 +1,7 @@
 from django.db import models, connection
 from login.models import User
 # Create your models here.
-class Users(models.Model) :
-    account_id = models.IntegerField()
-    first_name = models.TextField()
-    last_name = models.TextField()
-    created_at = models.DateTimeField()
-    updated_at = models.DateTimeField()
-
-    class Meta:
-        managed = False
-        db_table = 'users'
-
+class Users() :
     def get_all() :
             query = """SELECT * 
                        FROM accounts 

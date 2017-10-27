@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %} ERMS! | Departments {% endblock %}
+{% block content-top-nav %}
+    {% include 'top-nav.html' %}
+{% endblock %}
+{% block content %}
+<div class="jumbotron">
+    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Department Name</th>
+                <th>Description</th>
+                <th>Department Head</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if departments %}
+                {% for department in departments %}
+                    <tr>
+                        <td> {{ department.id }} </td>
+                        <td> {{ department.department_name }} </td>
+                        <td> {{ department.department_desc }} </td>
+                        <td> {{ department.department_head }} </td>
+                        <td>
+                            <a href="{% url 'delete_employee'  department.id %}" class="btn btn-danger btn-xs "><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+{% block myjs %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
+</script>
+{% endblock %}

@@ -2,8 +2,11 @@
 {% extends "base.html" %}
 {% block title %} Edit Employee {% endblock %}
 
+{% block content-top-nav %}
+    {% include "top-nav.html" %}
+{% endblock %}
+
 {% block content %}
-    {% include "nav.html" %}
 
     {% if is_update %}
     <div class="alert alert-success">

@@ -4,23 +4,25 @@
     ERMS | Management
 {% endblock %}
 
+{% block content-top-nav %}
+    {% include "top-nav.html" %}
+{% endblock %}
+
 {% block content %}
-    {% include "nav.html" %}
     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Add Employee</button>
-    <a href="{% url 'manage_users' %}" class="btn btn-success btn-lg">Manage User</a>
     <br>
     <br>
-    {% if is_save %}
+    {% if status == 'success' %}
         <div class="alert alert-success">
             <strong>Success!</strong> Indicates a successful or positive action.
         </div>    
-    {% elif is_error %}
+    {% elif status == 'error' %}
         <div class="alert alert-danger">
             <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
           </div>
     {% endif %}
 
-    {% if is_deleted %}
+    {% if s %}
     <div class="alert alert-success delete-alert">
         <strong>Success!</strong> Indicates a successful delete action.
     </div> 
@@ -35,6 +37,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Birthdate</th>
+                    <th>Department</th>
                     <th>Address</th>
                     <th>Age</th>
                     <th>Salary</th>
@@ -47,6 +50,7 @@
                         <tr>
                             <td> {{ employee.last_name }}, {{ employee.first_name}} </td>
                             <td> {{ employee.birthdate }} </td>
+                            <td> {{ employee.department.department_name }}</td>
                             <td> {{ employee.address }} </td>
                             <td> {{ employee.age }} </td>
                             <td> {{ employee.salary }}</td>
@@ -76,7 +80,8 @@
             <h4 class="modal-title">Add Employee</h4>
             </div>
             <div class="modal-body">
-                <form method="POST" id="add_employee_form">
+                <form method="POST" id="add_employee_form" action="{% url 'manage_employees' %}">
+                    {% csrf_token %}
                     <div class="form-group">
                         <label>First Name</label>
                         <input type="text" class="form-control" name="first_name" placeholder="First Name" required>
@@ -92,6 +97,15 @@
                     <div class="form-group">
                         <label>Age</label>
                         <input type="number" class="form-control" name="age" placeholder="Age" value="{{ employee_info.age }}">
+                    </div>
+                    <div class="form-group">
+                        <label>Department</label>
+                        <select name="department" class="form-control" required>
+                            <option value=""> Select Department </option>
+                            {% for department in departments %}
+                                <option value="{{department.id}}"> {{ department.department_name }} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>Address</label>

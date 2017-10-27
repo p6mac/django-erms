@@ -1,7 +1,9 @@
 from django.db import models
 from django.forms import ModelForm
+from departments.models import Departments
 # Create your models here.
 class Employees(models.Model):
+    department = models.ForeignKey(Departments, on_delete = models.CASCADE, default='')
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     birthdate = models.DateField()
@@ -10,10 +12,9 @@ class Employees(models.Model):
     salary = models.IntegerField()
 
     class Meta:
-        managed = False
         db_table = 'employees'
 
-    def update(id, *post_data) :
+    def update(id, post_data) :
          if Employees.objects.filter(pk = id).exists() :
             employee = Employees.objects.get(pk = id)
             employee.first_name = post_data['first_name']

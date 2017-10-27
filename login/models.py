@@ -7,7 +7,6 @@ class Account(models.Model):
     password = models.CharField(max_length = 50)
     created_at = models.DateTimeField(auto_now=True)
     class Meta:
-        managed = False
         db_table = 'accounts'
     
 class AccountForm(ModelForm) :
@@ -25,5 +24,4 @@ class User(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta :
-        manage : False
         db_table = 'users'

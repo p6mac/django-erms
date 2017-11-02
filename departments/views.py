@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from departments.models import Departments, DepartmentsForm
 from django.views.generic import TemplateView
+from django.shortcuts import redirect
 from django.urls import reverse
 
 # Create your views here.
@@ -19,5 +20,14 @@ class DepartmentsView(TemplateView) :
         if form.is_valid() :
             form.save()
 
-        return render(request, self.template_name)
+        return redirect('/manage_departments')
+
+class ManageDepartment :
+    
+    def edit(self, request, id) :
+        pass
+
+
+    def delete(self, request, id) :
+        pass
         

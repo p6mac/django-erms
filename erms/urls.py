@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from .settings import APPS
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^', include('login.urls')),
-    url(r'^', include('home.urls')),
-    url(r'^', include('users.urls')),
-    url(r'^', include('departments.urls'))
+    url(r'^admin/', admin.site.urls)
 ]
+
+if APPS :
+    for app in APPS :
+        route = url(r'^', include('%s.urls' % app))
+        urlpatterns.append(route)

@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block title %} ERMS | Shopping Cart {% endblock %}
+
+{% block content-top-nav %}
+   {% include 'top-nav.html' %}
+{% endblock %}
+
+
+
+{% block content %}
+<div class="col-lg-3 col-xs-6 pull-right">
+    <!-- small box -->
+    <div class="small-box bg-aqua">
+      <div class="inner">
+        <h3 id="my_order_value"></h3>
+
+        <p>My Orders</p>
+      </div>
+      <div class="icon">
+        <i class="fa fa-shopping-cart"></i>
+      </div>
+      <a href="#" class="small-box-footer">
+        Checkout <i class="fa fa-arrow-circle-right"></i>
+      </a>
+    </div>
+  </div>
+<div class="jumbotron">
+    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if products %}
+                {% for product in products %}
+                    <tr>
+                        <td>2</td>
+                        <td>{{ product.product_name }} </td>
+                        <td>{{ product.category }}</td>
+                        <td>{{ product.price }} </td>
+                        <td>{{ product.quantity }}</td>
+                        <td>
+                            <a value='{{ product.price }}' product-id="{{ product.id }}" class="btn btn-primary btn-xs add-card-btn"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></td>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="6" align="center">No Data Found.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block myjs %}
+<script>
+    var add_carts = [],
+        my_order_value = 0.00;
+    $('#my_order_value').text(my_order_value)
+    $('.add-card-btn').click(function(){
+        var product_id = $(this).attr('product-id');
+        add_carts.push(product_id);
+        my_order_value += parseInt($(this).attr('value'))
+        $('#my_order_value').text(my_order_value)
+        console.log(add_carts)
+    })
+</script>
+{% endblock %}

@@ -37,11 +37,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+]
+# Custom Apps ito
+APPS = [
     'login',
     'departments',
     'home',
     'users',
+    'products',
+    'shopping'
 ]
+
+if APPS :
+    for app in APPS :
+        INSTALLED_APPS.append(app)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

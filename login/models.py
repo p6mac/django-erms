@@ -8,6 +8,10 @@ class Account(models.Model):
     created_at = models.DateTimeField(auto_now=True)
     class Meta:
         db_table = 'accounts'
+
+
+
+        
     
 class AccountForm(ModelForm) :
     class Meta :

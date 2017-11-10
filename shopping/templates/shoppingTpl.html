@@ -12,8 +12,7 @@
     <!-- small box -->
     <div class="small-box bg-aqua">
       <div class="inner">
-        <h3 id="my_order_value"></h3>
-
+        <h3>₱ <span id="my_order_value"></span></h3>
         <p>My Orders</p>
       </div>
       <div class="icon">
@@ -40,7 +39,7 @@
             {% if products %}
                 {% for product in products %}
                     <tr>
-                        <td>2</td>
+                        <td>{{ product.id }} </td>
                         <td>{{ product.product_name }} </td>
                         <td>{{ product.category }}</td>
                         <td>{{ product.price }} </td>
@@ -58,10 +57,14 @@
         </tbody>
     </table>
 </div>
+
+
+
 {% endblock %}
 
 {% block myjs %}
 <script>
+    $(document).ready(function(){
     var add_carts = [],
         my_order_value = 0.00;
     $('#my_order_value').text(my_order_value)
@@ -72,5 +75,6 @@
         $('#my_order_value').text(my_order_value)
         console.log(add_carts)
     })
+})
 </script>
 {% endblock %}

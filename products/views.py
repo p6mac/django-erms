@@ -48,7 +48,7 @@ class GenerateProductsReports() :
 
         columns = ['Id', 'Product Name', 'Category', 'Price', 'Quantity']
 
-        ws.write_merge(0,0,0,4, 'The Quick Brown Fox Jumps Over The Lazy Dog')               
+        ws.write_merge(0,0,0,4, 'My Inventory')               
         for col_num in range(len(columns)) :
             ws.write(row_num, col_num, columns[col_num], font_style)
 
